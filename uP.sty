@@ -1,0 +1,53 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{uP}[2018\/11\/4 uP LaTeX package for inputting code]
+
+\RequirePackage[dvipsnames]{xcolor} % For colors and custom colors
+\RequirePackage{listings}   % For code listings
+\RequirePackage{enumitem}   % Allows enumeration labels to change on demand within the doc
+
+\lstloadlanguages{avr}
+\lstloadlanguages{C}
+\renewcommand\lstlistingname{Code} % Replaces Listing: with Code:
+\colorlet{background}{gray!3!} % A hint of gray
+\lstdefinestyle{numbers}{numbers=left,firstnumber=1,numberstyle=\tiny\color{blue},stepnumber=5}
+\lstdefinestyle{MyFrame}{backgroundcolor=\color{background},frame=shadowbox}
+\lstdefinestyle{syntax}{
+    basicstyle = \scriptsize\ttfamily,  % Use very small true type font
+    tabsize = 4,                        % 4 spaces per tab
+    keywordstyle = \color{blue}\bf\ttfamily, % instructions in blue, bold
+    keywordstyle = [2]\color{orange},   % registers and ports in orange
+    keywordstyle = [3]\color{purple},   % directives in purple
+    stringstyle = \color{orange}\ttfamily, % Strings in orange
+    commentstyle = \usefont{T1}{pcr}{m}{sl}\color{Sepia}\scriptsize, % Comments in dark red
+    morecomment = [l][\color{ForestGreen}]{\#}, % Includes in green
+}
+\lstdefinestyle{MyCStyle}{language=C,style=numbers,style=MyFrame,style=syntax}
+\lstdefinestyle{MyAVRStyle}{language=avr,style=numbers,style=MyFrame,style=syntax}
+
+% creates a new command to include an asm script,
+% the first parameter is the filename of the program (without .asm),
+% the second parameter is the caption
+\newcommand{\avr}[2]{
+\begin{itemize}
+    \item[]\lstinputlisting[caption=#2,label=#1.asm,style=MyAVRStyle]{#1.asm}
+\end{itemize}
+}
+\newcommand{\cc}[2]{
+\begin{itemize}
+    \item[]\lstinputlisting[caption=#2,label=#1.c,style=MyCStyle]{#1.c}
+\end{itemize}
+}
+% No frame for headers
+\newcommand{\ch}[2]{
+\begin{itemize}
+    \item[]\lstinputlisting[caption=#2,label=#1.h,style=MyCStyle,frame=none]{#1.h}
+\end{itemize}
+}
+% No frame for headers
+% Add complementary h and c files
+\newcommand{\cch}[2]{
+\begin{itemize}
+    \item[]\lstinputlisting[caption=#2,label=#1.h,style=MyCStyle,frame=none]{#1.h}
+    \item[]\lstinputlisting[label=#1.c,style=MyCStyle,frame=none]{#1.c}
+\end{itemize}
+}
