@@ -32,6 +32,11 @@
     \item[]\lstinputlisting[caption=#2,label=#1.asm,style=MyAVRStyle]{#1.asm}
 \end{itemize}
 }
+\newcommand{\cs}[2]{
+\begin{itemize}
+    \item[]\lstinputlisting[caption=#2,label=#1.s,style=MyAVRStyle]{#1.s}
+\end{itemize}
+}
 \newcommand{\cc}[2]{
 \begin{itemize}
     \item[]\lstinputlisting[caption=#2,label=#1.c,style=MyCStyle]{#1.c}
@@ -43,7 +48,7 @@
     \item[]\lstinputlisting[caption=#2,label=#1.h,style=MyCStyle,frame=none]{#1.h}
 \end{itemize}
 }
-% No frame for headers
+% No frame for header
 % Add complementary h and c files
 \newcommand{\cch}[2]{
 \begin{itemize}
