@@ -4,6 +4,7 @@
 \RequirePackage[dvipsnames]{xcolor} % For colors and custom colors
 \RequirePackage{listings}   % For code listings
 \RequirePackage{enumitem}   % Allows enumeration labels to change on demand within the doc
+\RequirePackage{graphicx} % For image insertions
 
 \lstloadlanguages{avr}
 \lstloadlanguages{C}
@@ -28,31 +29,40 @@
 % the first parameter is the filename of the program (without .asm),
 % the second parameter is the caption
 \newcommand{\avr}[2]{
-\begin{itemize}
-    \item[]\lstinputlisting[caption=#2,label=#1.asm,style=MyAVRStyle]{#1.asm}
-\end{itemize}
+    \begin{itemize}
+        \item[]\lstinputlisting[caption=#2,label=#1.asm,style=MyAVRStyle]{#1.asm}
+    \end{itemize}
 }
 \newcommand{\cs}[2]{
-\begin{itemize}
-    \item[]\lstinputlisting[caption=#2,label=#1.s,style=MyAVRStyle]{#1.s}
-\end{itemize}
+    \begin{itemize}
+        \item[]\lstinputlisting[caption=#2,label=#1.s,style=MyAVRStyle]{#1.s}
+    \end{itemize}
 }
 \newcommand{\cc}[2]{
-\begin{itemize}
-    \item[]\lstinputlisting[caption=#2,label=#1.c,style=MyCStyle]{#1.c}
-\end{itemize}
+    \begin{itemize}
+        \item[]\lstinputlisting[caption=#2,label=#1.c,style=MyCStyle]{#1.c}
+    \end{itemize}
 }
 % No frame for headers
 \newcommand{\ch}[2]{
-\begin{itemize}
-    \item[]\lstinputlisting[caption=#2,label=#1.h,style=MyCStyle,frame=none]{#1.h}
-\end{itemize}
+    \begin{itemize}
+        \item[]\lstinputlisting[caption=#2,label=#1.h,style=MyCStyle,frame=none]{#1.h}
+    \end{itemize}
 }
 % No frame for header
 % Add complementary h and c files
 \newcommand{\cch}[2]{
-\begin{itemize}
-    \item[]\lstinputlisting[caption=#2,label=#1.h,style=MyCStyle,frame=none]{#1.h}
-    \item[]\lstinputlisting[label=#1.c,style=MyCStyle,frame=none]{#1.c}
-\end{itemize}
+    \begin{itemize}
+        \item[]\lstinputlisting[caption=#2,label=#1.h,style=MyCStyle,frame=none]{#1.h}
+        \item[]\lstinputlisting[label=#1.c,style=MyCStyle,frame=none]{#1.c}
+    \end{itemize}
+}
+% Inserts an image. The first parameter passed in is the name with file extension,
+%     and the second parameter is a caption
+\newcommand{\fig}[2]{
+    \begin{figure}[!ht]
+        \includegraphics[width=\linewidth]{#1}
+        \caption{#2}
+        \label{fig:#1}
+    \end{figure}
 }
