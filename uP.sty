@@ -13,13 +13,13 @@
 \lstdefinestyle{numbers}{numbers=left,firstnumber=1,numberstyle=\tiny\color{blue},stepnumber=5}
 \lstdefinestyle{MyFrame}{backgroundcolor=\color{background},frame=shadowbox}
 \lstdefinestyle{syntax}{
-    basicstyle = \scriptsize\ttfamily,  % Use very small true type font
+    basicstyle = \tiny\ttfamily,  % Use very small true type font
     tabsize = 4,                        % 4 spaces per tab
     keywordstyle = \color{blue}\bf\ttfamily, % instructions in blue, bold
     keywordstyle = [2]\color{orange},   % registers and ports in orange
     keywordstyle = [3]\color{purple},   % directives in purple
     stringstyle = \color{orange}\ttfamily, % Strings in orange
-    commentstyle = \usefont{T1}{pcr}{m}{sl}\color{Sepia}\scriptsize, % Comments in dark red
+    commentstyle = \usefont{T1}{pcr}{m}{sl}\color{Sepia}\tiny, % Comments in dark red
     morecomment = [l][\color{ForestGreen}]{\#}, % Includes in green
 }
 \lstdefinestyle{MyCStyle}{language=C,style=numbers,style=MyFrame,style=syntax}
@@ -54,7 +54,7 @@
 \newcommand{\cch}[2]{
     \begin{itemize}
         \item[]\lstinputlisting[caption=#2,label=code:#1.h,style=MyCStyle,frame=none]{#1.h}
-        \item[]\lstinputlisting[label=code:#1.c,style=MyCStyle,frame=none]{#1.c}
+        \item[]\lstinputlisting[caption=Source Code,label=code:#1.c,style=MyCStyle,frame=none]{#1.c}
     \end{itemize}
 }
 % Inserts an image. The first parameter passed in is the name with file extension,
