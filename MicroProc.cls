@@ -1,7 +1,7 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{MicroProc}[2018\/11\/3 uP LaTeX class]
 
-\LoadClass[letterpage, 12pt]{article}
+\LoadClass[12pt]{article}
 \RequirePackage[margin=1in]{geometry} % 1 inch margins
 \RequirePackage{fancyhdr}   % Helps make custom headers
 \RequirePackage{titlesec}   % Helps make custom sections and make them the right size
@@ -9,10 +9,10 @@
 \RequirePackage{indentfirst}% Indent first paragraph
 \ifxetex
     \RequirePackage{fontspec}   % For setting default fonts
-    \setmainfont{Times New Roman} % Use times new roman as the main font
+    \setmainfont{Times New Roman}[Ligatures=Rare] % Use times new roman as the main font
     \setmonofont{Consolas}  % Use consolas for monospace
+    \RequirePackage[cmbraces]{newtxmath} % Plays well with Times New Roman
 \else
-    \RequirePackage{times}
     \RequirePackage{inconsolata}
 \fi
 
