@@ -2,19 +2,29 @@
 \ProvidesClass{MicroProc}[2018\/11\/3 uP LaTeX class]
 
 \LoadClass[12pt]{article}
-\RequirePackage[margin=1in]{geometry} % 1 inch margins
+\RequirePackage[margin=1in]{geometry} % 1 inch margins, easiest way to set margins
 \RequirePackage{fancyhdr}   % Helps make custom headers
 \RequirePackage{titlesec}   % Helps make custom sections and make them the right size
-\RequirePackage{ifxetex}
 \RequirePackage{indentfirst}% Indent first paragraph
-\ifxetex
-    \RequirePackage{fontspec}   % For setting default fonts
-    \setmainfont{Times New Roman}[Ligatures=Rare] % Use times new roman as the main font
-    \setmonofont{Consolas}  % Use consolas for monospace
-    \RequirePackage[cmbraces]{newtxmath} % Plays well with Times New Roman
-\else
-    \RequirePackage{inconsolata}
-\fi
+\RequirePackage{comment}
+% Alternative to Times New Roman or pdflatex default, works for both
+\RequirePackage[T1]{fontenc}
+\RequirePackage{mathpazo}
+\RequirePackage{eulervm}
+\RequirePackage{inconsolata}
+
+\begin{comment}
+\RequirePackage{ifxetex}
+    \ifxetex
+        \RequirePackage{fontspec}   % For setting default fonts
+        \setmainfont{Times New Roman}[Ligatures=Rare] % Use times new roman as the main font
+        \setmonofont{Consolas}  % Use consolas for monospace
+        \RequirePackage[cmbraces]{newtxmath} % Plays well with Times New Roman
+    \else
+        \RequirePackage{lmodern}[Ligatures=Rare] % Alternative for computer modern
+        \RequirePackage{inconsolata}
+    \fi
+\end{comment}
 
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}
 \ProcessOptions\relax % Pass any additional paramters into article class
@@ -27,7 +37,7 @@
 \renewcommand{\footrulewidth}{0pt}  % Remove footer decorative line
 
 % These guys make A. Header and Section Number for section and subsection commands
-% rrespectively
+% respectively
 \titleformat{\section}
     {\normalfont\Large\bfseries}{\Alph{section}.}{1ex}{} % 17pt font assuming 12pt default
 \titleformat{\subsection}
